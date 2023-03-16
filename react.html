@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>setTimeout</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <h2>Speed check by Govardhan Reddy Lakkireddy</h2>
+
+    <div id="target"> Your time </div>
+    <button type="button" class="btn btn-info" onclick="startTime()">Start Timer</button>
+    <div id="counter"> Count </div>
+    <button type="button" class="btn btn-warning" onclick="recordTime()"> React</button>
+    
+    <p id="countdown">It will become red </p>
+    
+  <script> 
+  let reactTime
+  function recordTime(){
+    reactTime=undefined;
+    reactTime= Date.now();
+    console.log(reactTime);
+  }
+  let i=0;
+  let gov=Math.floor((Math.random() * 10) + 2);
+  function startTime(){
+     gov=Math.floor((Math.random() * 10) + 2);
+    for( i=0;i<gov;i++){
+        console.log(gov);
+        setTimeou(i); 
+    }
+    
+  setTimeout( () => {
+        console.log("Entered anononymouse fn");
+         if(reactTime==undefined){
+            console.log("entered if");
+            document.getElementById('target').innerHTML="Too Slow";
+         }
+         else{
+            console.log("entered else");
+            let endTime;
+            endTime=Date.now();
+            console.log("endtime is"+endTime);
+            let temp=endTime-reactTime;
+            console.log(temp);
+            document.getElementById('target').innerHTML="Time was "+temp; }},8*1000);
+    }
+    
+    function setTimeou(i)
+   {
+        setTimeout(()=>{document.getElementById('countdown').innerHTML=i;},(gov-i)*1000);
+    }
+  </script>
+
+</body>
+</html>
