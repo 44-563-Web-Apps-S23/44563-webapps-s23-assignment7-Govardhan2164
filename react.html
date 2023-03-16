@@ -13,50 +13,48 @@
 
     <h2>Speed check by Govardhan Reddy Lakkireddy</h2>
 
-    <div id="target"> Your time </div>
-    <button type="button" class="btn btn-info" onclick="startTime()">Start Timer</button>
-    <div id="counter"> Count </div>
-    <button type="button" class="btn btn-warning" onclick="recordTime()"> React</button>
-    
-    <p id="countdown">It will become red </p>
-    
-  <script> 
-  let reactTime
-  function recordTime(){
-    reactTime=undefined;
-    reactTime= Date.now();
-    console.log(reactTime);
-  }
-  let i=0;
-  let gov=Math.floor((Math.random() * 10) + 2);
-  function startTime(){
-     gov=Math.floor((Math.random() * 10) + 2);
-    for( i=0;i<gov;i++){
-        console.log(gov);
-        setTimeou(i); 
-    }
-    
-  setTimeout( () => {
-        console.log("Entered anononymouse fn");
-         if(reactTime==undefined){
-            console.log("entered if");
-            document.getElementById('target').innerHTML="Too Slow";
-         }
-         else{
-            console.log("entered else");
-            let endTime;
-            endTime=Date.now();
-            console.log("endtime is"+endTime);
-            let temp=endTime-reactTime;
-            console.log(temp);
-            document.getElementById('target').innerHTML="Time was "+temp; }},8*1000);
-    }
-    
-    function setTimeou(i)
-   {
-        setTimeout(()=>{document.getElementById('countdown').innerHTML=i;},(gov-i)*1000);
-    }
-  </script>
+    <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
 
+    <button type="button" class="btn btn-primary" onclick="recordTime()">React</button>
+    <button type="button" class="btn btn-secondary" onclick="randomStart()">Random Start</button>
+    
+    <div id="target">Your time </div> 
+    <div id="counter">Count </div> 
+    
+    <script> 
+    let reactTime=undefined;
+    var startCount=8
+    function recordTime(){
+      reactTime=Date.now();
+      console.log(reactTime);
+    }
+  
+    function randomStart(){
+          startCount = Math.floor(Math.random()*(10-2+1)+2)
+          startTime()
+      }
+  
+    function startTime(){
+      for(let i=0;i<=startCount;i++){
+        //  alert("1st "+i);
+          setTimeout(() => { 
+            // alert("2nd "+i);
+              document.getElementById('counter').innerHTML = "Count: "+i},
+           (startCount-i)*1000)
+      }
+      setTimeout(()=>{
+          if(reactTime==undefined){
+              document.getElementById('target').innerHTML="Too Slow"
+          }
+          else{
+              endTime = Date.now()
+              document.getElementById('target').innerHTML = "Time was "+(endTime-reactTime)
+          }
+      },startCount*1000)
+  
+    }
+  
+    </script>
+    
 </body>
 </html>
